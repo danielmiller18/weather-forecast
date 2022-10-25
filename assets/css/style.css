@@ -1,0 +1,94 @@
+/* Styles */
+#header {
+  background-size: cover;
+  background-position-y: 40%;
+
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+
+  position: relative !important;
+}
+
+/* Main header styling */
+#header h1 {
+  background-color: #0cbaba;
+  color: linear-gradient(315deg, #0cbaba 0%, #01baef 74%);
+  font-size: 400%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 0px 3px 3px rgba(6, 22, 22, 0.658);
+}
+
+/* BootsTrap Class modification */
+.jumbotron {
+  padding: 1rem;
+  border-radius: 0;
+}
+
+#search-city {
+  width: 80%;
+}
+
+#search-button-icon {
+  width: 15px;
+  display: inline-block;
+}
+
+#current-weather {
+  padding-left: 15px;
+}
+/* Clear storage button */
+#clear-storage {
+  color: grey;
+  text-decoration: none;
+  font-size: 0.75em;
+  margin: 0.5em 0em 0em 0.5em;
+  font-size: 22px;
+}
+
+.weather-card {
+  width: 9rem;
+  background-color: #abe9cd;
+  background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+  color: white;
+  text-align: center;
+}
+
+.uv-favorable {
+  background-color: green;
+  border-radius: 5px;
+  color: white;
+}
+
+.uv-moderate {
+  background-color: orange;
+  border-radius: 5px;
+  color: white;
+}
+
+.uv-severe {
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+}
+
+/*  To make it responsive accordingly in tab */
+@media only screen and (max-width: 996px) {
+  #search-city {
+    width: 100%;
+  }
+  #search-button {
+    width: 100%;
+  }
+}
+/*  To make it responsive accordingly in mobile */
+
+@media only screen and (max-width: 576px) {
+  #fiveDayForecastUl {
+    justify-content: center;
+  }
+}
