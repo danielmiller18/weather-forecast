@@ -1,9 +1,7 @@
-//Custom made variables
 var OWMAPI = "788d5638d7c8e354a162d6c9747d1bdf";
 var City = "";
 var lastCITY = "";
 
-// Error handler
 var handleErrors = (response) => {
   if (!response.ok) {
     throw Error(response.statusText);
@@ -11,7 +9,6 @@ var handleErrors = (response) => {
   return response;
 };
 
-// To get the current information of weathers
 var getCurrentConditions = (event) => {
   let city = $("#search-city").val();
   City = $("#search-city").val();
@@ -21,7 +18,7 @@ var getCurrentConditions = (event) => {
     "&units=imperial" +
     "&APPID=" +
     OWMAPI;
-  // to fetch the response from API
+
   fetch(queryURL)
     .then(handleErrors)
     .then((response) => {
@@ -42,7 +39,7 @@ var getCurrentConditions = (event) => {
       renderCities();
       getFiveDayForecast(event);
       $("#header-text").text(response.name);
-      // Inner html to set the details for the city weather
+      
       let currentWeatherHTML = `
             <h3>${response.name} ${currentMoment.format(
         "(MM/DD/YY)"
@@ -81,7 +78,7 @@ var getCurrentConditions = (event) => {
         });
     });
 };
-// To fetch advance response of 5 day weather forcast
+
 var getFiveDayForecast = (event) => {
   let city = $("#search-city").val();
   let queryURL =
@@ -99,7 +96,7 @@ var getFiveDayForecast = (event) => {
       let fiveDayForecastHTML = `
         <h2>5-Day Forecast:</h2>
         <div id="fiveDayForecastUl" class="d-inline-flex flex-wrap ">`;
-      // loop on the list
+      
       for (let i = 0; i < response.list.length; i++) {
         let dayData = response.list[i];
         let dayTimeUTC = dayData.dt;
@@ -113,13 +110,13 @@ var getFiveDayForecast = (event) => {
           "https://openweathermap.org/img/w/" +
           dayData.weather[0].icon +
           ".png";
-        // check on the format MUST
+        
         if (
           thisMoment.format("HH:mm:ss") === "11:00:00" ||
           thisMoment.format("HH:mm:ss") === "12:00:00" ||
           thisMoment.format("HH:mm:ss") === "13:00:00"
         ) {
-          // changing the innerHTML through JS
+          
           fiveDayForecastHTML += `
                 <div class="weather-card card m-2 p0">
                     <ul class="list-unstyled p-3">
@@ -137,7 +134,6 @@ var getFiveDayForecast = (event) => {
     });
 };
 
-// Saving data in the local storage
 var saveCity = (newCity) => {
   let cityExists = false;
   for (let i = 0; i < localStorage.length; i++) {
@@ -151,7 +147,6 @@ var saveCity = (newCity) => {
   }
 };
 
-// show the results
 var renderCities = () => {
   $("#city-results").empty();
   if (localStorage.length === 0) {
@@ -164,7 +159,7 @@ var renderCities = () => {
     let lastCITYKey = "cities" + (localStorage.length - 1);
     lastCITY = localStorage.getItem(lastCITYKey);
     $("#search-city").attr("value", lastCITY);
-    // for loop to check instance in the storage
+    
     for (let i = 0; i < localStorage.length; i++) {
       let city = localStorage.getItem("cities" + i);
       let cityEl;
@@ -186,7 +181,6 @@ var renderCities = () => {
   }
 };
 
-// search city and set the value
 $("#search-button").on("click", (event) => {
   event.preventDefault();
   City = $("#search-city").val();
@@ -205,7 +199,6 @@ $("#clear-storage").on("click", (event) => {
   renderCities();
 });
 
-// function calls
 renderCities();
 
 getCurrentConditions();
