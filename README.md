@@ -4,5 +4,5 @@ For this project I created a weather forecast site. Using bootstrap, JS, CSS and
 
 Screenshot is in assets folder because it won't let me copy/paste like the last grader said I could.
 
-Live Site:
+Live Site: https://danielmiller18.github.io/weather-forecast/
 
