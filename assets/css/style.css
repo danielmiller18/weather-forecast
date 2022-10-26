@@ -33,6 +33,10 @@ li {
   color: white;
 }
 
+label {
+  color: white;
+}
+
 .jumbotron {
   padding: 1rem;
   border-radius: 0;
